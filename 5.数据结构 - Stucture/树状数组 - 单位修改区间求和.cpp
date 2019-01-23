@@ -1,10 +1,13 @@
+/*
+ * add(p, delta) 表示将点p增加delta
+ * sum(p) 表示从p到n的和
+ */
+
 #include <bits/stdc++.h>
 using namespace std;
 
 const int MAXN = 500000 + 5;
-int n = 0, m = 0;
-int c[MAXN], a[MAXN];
-int opt, x, y, tmp;
+int c[MAXN], a[MAXN], n = 0;
 
 inline int lowbit(int p)
 {
@@ -18,7 +21,6 @@ void add(int p, int delta)
 	{
 		c[p] += delta;
 	}
-	return ;
 }
 
 int sum(int p)
@@ -30,6 +32,8 @@ int sum(int p)
 	}
 	return ans;
 }
+
+int m, opt, x, y, tmp;
 
 int main()
 {
@@ -57,3 +61,4 @@ int main()
 	
 	return 0;
 }
+

@@ -82,12 +82,12 @@ public:
 
 	bool operator<=(const BigInt &other) const
 	{
-		return (*this == other || *this < other) ;
+		return Compare(*this, other) <= 0 ;
 	}
 
 	bool operator>=(const BigInt &other) const
 	{
-		return (*this == other || *this > other) ;
+		return Compare(*this, other) >= 0 ;
 	}
 
 	BigInt operator+(const BigInt &other) const
@@ -130,3 +130,4 @@ int main(int argc, char const *argv[])
 
 	return 0;
 }
+

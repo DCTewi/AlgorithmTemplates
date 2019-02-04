@@ -19,6 +19,20 @@ inline int read()
 	return w? -x: x;
 }
 
+template <typename ty>
+inline void read(ty &x)
+{
+	x = 0; int w = 0; char ch = getchar();
+	while (!isdigit(ch))
+	{
+		w |= ch == '-'; ch = getchar();
+	}
+	while (isdigit(ch))
+	{
+		x = (x << 3) + (x << 1) + (ch ^ 48); ch = getchar();
+	}
+}
+
 /*
  * double d = readDbl();
  */
@@ -55,5 +69,9 @@ inline void print(int x)
 
 int main(int argc, char const *argv[])
 {
+	int a = read(); long long b = read();
+	cout<<a<<endl<<b<<endl;
+	read(a); read(b);
+	cout<<a<<endl<<b<<endl;
 	return 0;
 }

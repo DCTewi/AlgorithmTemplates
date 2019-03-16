@@ -13,6 +13,9 @@ const int MAXN = 1e3 + 5;
 class BigInt
 {
 public:
+
+	int d[MAXN], len = 0;
+	
 	BigInt()
 	{
 		memset(this->d, 0, sizeof(d));
@@ -26,7 +29,6 @@ public:
 		}
 	}
 
-	int d[MAXN], len = 0;
 
 	static int Compare(BigInt a, BigInt b)
 	{

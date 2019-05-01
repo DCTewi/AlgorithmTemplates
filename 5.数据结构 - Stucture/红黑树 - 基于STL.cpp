@@ -10,12 +10,48 @@ using namespace __gnu_pbds;
 typedef long long ll;
 typedef tree<ll, null_type, less<ll>, rb_tree_tag, tree_order_statistics_node_update> rbtree;
 
-const int Offset = 20;
+class Rb_Tree
+{
+private:
+    
+    const static int Offset = 20;
+    rbtree _tr;
+    int _ind = 1;
 
-rbtree tr;
+public:
+    void add(ll x)
+    {
+        _tr.insert((x << Offset) + _ind);
+        _ind++;
+    }
+    void del(ll x)
+    {
+        _tr.erase(_tr.lower_bound(x << Offset));
+    }
+    int rankof(ll x)
+    {
+        return _tr.order_of_key(x << Offset) + 1;
+    }
+    ll kth(int k)
+    {
+        return (*_tr.find_by_order(k - 1) >> Offset);
+    }
+    ll get_prev(ll x)
+    {
+        return (*--_tr.lower_bound(x << Offset) >> Offset);
+    }
+    ll get_next(ll x)
+    {
+        return (*_tr.lower_bound((x + 1) << Offset) >> Offset);
+    }
+};
+
+Rb_Tree tr;
 
 int main()
 {
+    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+    
     int n; cin >> n;
     for (int i = 1; i <= n; i++)
     {
@@ -25,37 +61,37 @@ int main()
             case 1:
             {
                 // Add
-                tr.insert((x << Offset) + i);
+                tr.add(x);
             }
             break;
             case 2:
             {
                 // Del
-                tr.erase(tr.lower_bound(x << Offset));
+                tr.del(x);
             }
             break;
             case 3:
             {
                 // Get rank
-                cout << tr.order_of_key(x << Offset) + 1 << "\n";
+                cout << tr.rankof(x) << "\n";
             }
             break;
             case 4:
             {
                 //Get kth
-                cout << (*tr.find_by_order(x - 1) >> Offset) << "\n";
+                cout << tr.kth(x) << "\n";
             }
             break;
             case 5:
             {
                 // Get Prev
-                cout << (*--tr.lower_bound(x << Offset) >> Offset) << "\n";
+                cout << tr.get_prev(x) << "\n";
             }
             break;
             case 6:
             {
                 // Get Next
-                cout << (*tr.lower_bound((x + 1) << Offset) >> Offset) << "\n";
+                cout << tr.get_next(x) << "\n";
             }
             break;
             default: break;

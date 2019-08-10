@@ -29,6 +29,7 @@ endif
 " Util
 set noswapfile
 set noerrorbells
+set vb t_vb=
 set autoread
 
 " Indent
@@ -54,6 +55,7 @@ set smartcase
 
 " Compile
 if g:os == "win"
+    set shell=powershell
     map <F5> :w <CR> :!g++ "%" -o "%<.exe" -std=c++14 -O2 -Wall -DDEBUG ; "./%<.exe" <CR>
 else
     map <F5> :w <CR> :!g++ "%" -o "%<.exe" -std=c++14 -O2 -Wall -DDEBUG && "./%<.exe" <CR>

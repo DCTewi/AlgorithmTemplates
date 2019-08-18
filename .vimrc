@@ -29,7 +29,8 @@ endif
 " Util
 set noswapfile
 set noerrorbells
-set vb t_vb=
+set novisualbell
+set t_vb=
 set autoread
 
 " Indent

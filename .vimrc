@@ -12,6 +12,22 @@ if !exists("g:os")
     endif
 endif
 
+" GVim
+if has("gui_running")
+    set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+    set fileencoding=utf-8
+    set guioptions-=m
+    set guioptions-=T
+    set guioptions-=r
+    set lines=35 columns=120
+    colorscheme evening
+    if g:os == "win"
+        set guifont=Microsoft_Yahei_Mono:h11
+    else
+        set guifont=Fira\ Mono\ 12
+    endif
+endif
+
 " Properties
 set nocompatible
 set showcmd
@@ -73,20 +89,4 @@ inoremap {<CR> {<CR>}<ESC>O
 
 " Header
 inoremap <F8> #include<bits/stdc++.h><CR>using namespace std;<CR>typedef long long ll;<CR>
-
-" GVim
-if has("gui_running")
-    set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
-    set fileencoding=utf-8
-    set guioptions-=m
-    set guioptions-=T
-    set guioptions-=r
-    set lines=35 columns=120
-    colorscheme torte
-    if g:os == "win"
-        set guifont=Microsoft_Yahei_Mono:h11
-    else
-        set guifont=Fira\ Mono\ 12
-    endif
-endif
 

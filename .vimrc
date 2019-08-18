@@ -73,11 +73,11 @@ set smartcase
 " Compile
 if g:os == "win"
     set shell=powershell
-    map <F5> :w <CR> :!g++ "%" -o "%<.exe" -std=c++14 -O2 -Wall -DDEBUG ; "./%<.exe" <CR>
+    map <F5> :w <CR> :silent !g++ "%" -o "%<.exe" -std=c++14 -O2 -Wall -DDEBUG ; "./%<.exe" <CR>
 else
-    map <F5> :w <CR> :!g++ "%" -o "%<.exe" -std=c++14 -O2 -Wall -DDEBUG && "./%<.exe" <CR>
+    map <F5> :w <CR> :silent !g++ "%" -o "%<.exe" -std=c++14 -O2 -Wall -DDEBUG && "./%<.exe" <CR>
 endif
-map <C-F5> :w <CR> :!python3 % <CR>
+map <C-F5> :w <CR> :silent !python3 % <CR>
 
 " Auto complete
 inoremap ( ()<ESC>i

@@ -10,6 +10,8 @@ using namespace std;
 typedef long long ll;
 //typedef unsigned long long ll; //when need;
 
+// quick multi begin //
+
 ll q_pow(ll a, ll k, ll mod)
 {
 	if (!k) return 1;
@@ -23,6 +25,8 @@ ll q_pow(ll a, ll k, ll mod)
 	}
 	return ans;
 }
+
+// quick multi begin //
 
 int main()
 {

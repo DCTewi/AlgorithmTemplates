@@ -6,9 +6,10 @@
 
 #include <bits/stdc++.h>
 using namespace std;
-
 typedef long long ll;
 //typedef unsigned long long ll; //when need;
+
+// quick multi begin //
 
 ll q_mul(ll a, ll b, ll mod)
 {
@@ -23,6 +24,8 @@ ll q_mul(ll a, ll b, ll mod)
 	}
 	return ans;
 }
+
+// quick multi end //
 
 int main()
 {

@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// sort() (雾)
+// sort() begin //
 
 void qsort(int a[], int l, int r)
 {
@@ -23,17 +23,15 @@ void qsort(int a[], int l, int r)
 	}
 }
 
+// sort() end //
+
 int main(int argc, char const *argv[])
 {
 	int a[] = {9, 2, 5, 12, 3, 233};
-
 	int len = sizeof(a) / sizeof(int);
 	qsort(a, 0, len - 1);
 
-	for (int i : a)
-	{
-		cout<<i<<" ";
-	}
+	for (int i : a) cout<<i<<" ";
 
 	return 0;
 }

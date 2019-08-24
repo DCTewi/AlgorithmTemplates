@@ -9,6 +9,8 @@ const int MAXN = 1e1 + 5;
 
 ll n, m, a[MAXN], ans = 0;
 
+// mat begin //
+
 struct Matrix
 {
     ll dat[MAXN][MAXN];
@@ -80,6 +82,8 @@ struct Matrix
         return res;
     }
 };
+
+// mat end //
 
 int main()
 {

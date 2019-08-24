@@ -1,11 +1,11 @@
 /*
 	Passed  https://www.luogu.org/problemnew/show/P3375
  */
-
 #include <bits/stdc++.h>
 using namespace std;
-
 typedef long long ll;
+
+// kmp begin //
 
 const int MAXN = 1e6 + 5;
 ll nxt[MAXN];
@@ -22,7 +22,6 @@ void getNext(string s/*, int *nxt */)
 		nxt[i] = k;
 	}
 }
-
 void kmp(string s, string p)
 {
 	getNext(p);
@@ -37,14 +36,14 @@ void kmp(string s, string p)
 			//找到某个匹配结果
 			k = nxt[k]; //继续向后匹配
 			/* Custom code*/
-
 				cout<<i - p.size() + 2<<endl; //输出模式串开始位置
 				//+2分别是位置坐标补正和减法补正:wq
-
 			/* Custom code end*/
 		}
 	}
 }
+
+// kmp end //
 
 int main()
 {

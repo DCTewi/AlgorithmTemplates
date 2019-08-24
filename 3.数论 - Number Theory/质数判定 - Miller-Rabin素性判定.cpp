@@ -2,9 +2,11 @@
 using namespace std;
 typedef unsigned long long ll;
 
+// miller rabin begin //
+
 const int TIMES = 20; //Test times;
 
-ll q_exp(ll a, ll k, ll mod)
+ll q_pow(ll a, ll k, ll mod)
 {
 	if (!k) return 1;
 
@@ -47,7 +49,7 @@ bool witness(ll a, ll n) //Check witness
 		j++;
 	}
 	// n - 1 => a ^ r * s
-	ll x = q_exp(a, tem, n);
+	ll x = q_pow(a, tem, n);
 	if (x == 1 || x == n - 1) return true;
 
 	while (j--)
@@ -74,6 +76,8 @@ bool miller_rabin(ll p) //Generate random a to check if there is a witness of p.
 
 	return true;
 }
+
+// miller rabin end //
 
 int main()
 {

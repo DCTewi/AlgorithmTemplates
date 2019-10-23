@@ -33,15 +33,14 @@ const int MAXM = 5e4 + 5;
 struct Edge
 {
     int to, next, cost;
+    Edge (int v = 0, int w = 0, int h = 0): to(v), cost(w), next(h) {}
 } edge[MAXM << 2];
 int head[MAXN];
 void add_edge(int u, int v, int w)
 {
     static int cnt = 0;
     cnt++;
-    edge[cnt].to = v;
-    edge[cnt].cost = w;
-    edge[cnt].next = head[u];
+    edge[cnt] = Edge(v, w, head[u]);
     head[u] = cnt;
 }
 

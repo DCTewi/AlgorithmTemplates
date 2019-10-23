@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
-const int MAXN = 2e5 + 5;
 
 // IO optimization
 template <typename ty>
@@ -19,13 +18,15 @@ inline void read(ty &x)
 }
 
 // Segment tree main part
+const int MAXN = 2e5 + 5;
+
 ll st[MAXN << 2], add[MAXN << 2];
 int n, N = 1;
 
-inline void build()
+inline void build(vector<int> rawdata)
 {
 	for (; N < n + 1; N <<= 1); // Get raw data's place.
-	for (int i = N + 1; i <= N + n; i++) read(st[i]); // Raw data.
+	for (int i = N + 1; i <= N + n; i++) st[i] = rawdata[i - N]; // Raw data.
 	for (int i = N - 1; i >= 1; i--) st[i] = st[i << 1] + st[i << 1 | 1]; // Build from leaves.
 }
 
@@ -70,7 +71,12 @@ inline ll query(int l, int r)
 int main(int argc, char const *argv[])
 {
 	int m; read(n); read(m);
-	build();
+	vector<int> rawdata(n + 1);
+	for (int i = 1; i <= n; i++)
+	{
+		read(rawdata[i]);
+	}
+	build(rawdata);
 
 	for (int i = 0; i < m; i++)
 	{

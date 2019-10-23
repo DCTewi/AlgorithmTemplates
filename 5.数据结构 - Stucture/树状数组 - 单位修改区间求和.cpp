@@ -1,12 +1,12 @@
 /*
  * add(p, delta) 表示将点p增加delta
- * sum(p) 表示从p到n的和
+ * sum(l, r) 表示从l到r的和
  */
 
 #include <bits/stdc++.h>
 using namespace std;
 
-const int MAXN = 500000 + 5;
+const int MAXN = 5e5 + 5;
 int c[MAXN], a[MAXN], n = 0;
 
 inline int lowbit(int p)
@@ -23,7 +23,7 @@ void add(int p, int delta)
 	}
 }
 
-int sum(int p)
+int sumall(int p)
 {
 	int ans = 0;
 	for (; p > 0; p -= lowbit(p))
@@ -31,6 +31,11 @@ int sum(int p)
 		ans += c[p];
 	}
 	return ans;
+}
+
+inline int sum(int l, int r)
+{
+	return sumall(r) - sumall(l - 1);
 }
 
 int m, opt, x, y, tmp;
@@ -53,9 +58,7 @@ int main()
 		}
 		else
 		{
-			x == 1?
-				cout<<sum(y)<<endl:
-				cout<<sum(y) - sum(x-1)<<endl;
+			cout << sum(x, y) << "\n";
 		}
 	}
 	

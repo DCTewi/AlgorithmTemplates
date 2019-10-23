@@ -42,6 +42,24 @@ inline double readDbl()
 
 // read double end //
 
+// template begin //
+
+template <typename T> T read()
+{
+	T x = 0, w = 0; char ch = getchar();
+	while (!isdigit(ch))
+	{
+		w |= ch == '-'; ch = getchar();
+	}
+	while (isdigit(ch))
+	{
+		x = (x << 3) + (x << 1) + (ch ^ 48); ch = getchar();
+	}
+	return w? -x: x;
+}
+
+// template end //
+
 // print begin //
 
 inline void print(int x)

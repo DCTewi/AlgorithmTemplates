@@ -10,17 +10,13 @@ const int MAXM = 5E5 + 5;
 
 struct Node
 {
-	Node(){}
-	Node(int d, int p)
-	{
-		this->dis = d; this->pos = p;
-	}
-
 	int dis, pos;
+
+	Node(int d = 0, int p = 0) : dis(d), pos(p) {}
 
 	bool operator>(const Node &other) const
 	{
-		return this->dis > other.dis;
+		return dis > other.dis;
 	}
 };
 
@@ -28,21 +24,20 @@ struct Edge
 {
 	int to, cost, next;
 
-	Edge(){}
-	Edge(int t, int c, int n)
-	{
-		this->to = t;
-		this->cost = c;
-		this->next = n;
-	}
+	Edge(int t = 0, int c = 0, int n = 0) : to(t), cost(c), next(n) {}
 
-}edge[MAXM];
+} edge[MAXM] ; // OR [MAXN << 2]
+int head[MAXN];
+inline void addEdge(int u, int v, int cost)
+{
+	static int cnt = 0;
+	cnt++;
+	edge[cnt] = Edge(v, cost, head[u]);
+	head[u] = cnt;
+}
 
-int head[MAXN], dis[MAXN], cnt = 0;
-bool vis[MAXN];
-
+int vis[MAXN], dis[MAXN];
 priority_queue<Node, vector<Node>, greater<Node> > q;
-
 void dij(int s)
 {
 	memset(dis, 0x3f, sizeof(dis));
@@ -69,13 +64,6 @@ void dij(int s)
 			}
 		}
 	}
-}
-
-inline void addEdge(int u, int v, int cost)
-{
-	cnt++;
-	edge[cnt] = Edge(v, cost, head[u]);
-	head[u] = cnt;
 }
 
 

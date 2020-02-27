@@ -1,41 +1,34 @@
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
+const int MAXN = 2e5 + 5;
 
 // IO optimization
 template <typename ty>
 inline void read(ty &x)
 {
-	x = 0; int w = 0; char ch = getchar();
-	while (!isdigit(ch))
-	{
-		w |= ch == '-'; ch = getchar();
-	}
-	while (isdigit(ch))
-	{
-		x = (x << 3) + (x << 1) + (ch ^ 48); ch = getchar();
-	}
+    x = 0; int w = 0; char ch = getchar();
+    while (!isdigit(ch))
+    {
+        w |= ch == '-'; ch = getchar();
+    }
+    while (isdigit(ch))
+    {
+        x = (x << 3) + (x << 1) + (ch ^ 48); ch = getchar();
+    }
 }
 
 // Segment tree main part
-<<<<<<< HEAD
-const int MAXN = 2e5 + 5;
-
-ll st[MAXN << 2], add[MAXN << 2];
-int n, N = 1;
-
-inline void build(vector<int> rawdata)
-{
-	for (; N < n + 1; N <<= 1); // Get raw data's place.
-	for (int i = N + 1; i <= N + n; i++) st[i] = rawdata[i - N]; // Raw data.
-	for (int i = N - 1; i >= 1; i--) st[i] = st[i << 1] + st[i << 1 | 1]; // Build from leaves.
-}
-=======
 struct ZkwTree
 {
-    ll st[MAXN << 2], add[MAXN << 2];
+    vector<ll> st, add;
     int n, N = 1;
->>>>>>> 50ae95198e51e7c4d0da7d0f5e71942d771d52aa
+
+    ZkwTree(int n) : n(n)
+    {
+        st = vector<ll>(n << 2);
+        add = vector<ll>(n << 2);
+    }
 
     inline void build(vector<int> rawdata)
     {
@@ -85,42 +78,33 @@ struct ZkwTree
 // For luogu p3372
 int main(int argc, char const *argv[])
 {
-	int m; read(n); read(m);
-<<<<<<< HEAD
-	vector<int> rawdata(n + 1);
-	for (int i = 1; i <= n; i++)
-	{
-		read(rawdata[i]);
-	}
-	build(rawdata);
-=======
-	vector<int> raw(n);
-	for (int i = 0; i < n; i++)
+    int m; read(st.n); read(m);
+    vector<int> raw(st.n);
+    for (int i = 0; i < st.n; i++)
     {
-	    read(raw[i]);
+        read(raw[i]);
     }
-	st.build(raw);
->>>>>>> 50ae95198e51e7c4d0da7d0f5e71942d771d52aa
+    st.build(raw);
 
-	for (int i = 0; i < m; i++)
-	{
-		int opt; read(opt);
-		switch (opt)
-		{
-			case 1:
-			{
-				int x, y, k; read(x); read(y); read(k);
-				st.update(x, y, k);
-				break;
-			}
-			case 2:
-			{
-				int x, y; read(x); read(y);
-				printf("%lld\n", st.query(x, y));
-				break;
-			}
-		}
-	}
+    for (int i = 0; i < m; i++)
+    {
+        int opt; read(opt);
+        switch (opt)
+        {
+            case 1:
+            {
+                int x, y, k; read(x); read(y); read(k);
+                st.update(x, y, k);
+                break;
+            }
+            case 2:
+            {
+                int x, y; read(x); read(y);
+                printf("%lld\n", st.query(x, y));
+                break;
+            }
+        }
+    }
 
-	return 0;
+    return 0;
 }

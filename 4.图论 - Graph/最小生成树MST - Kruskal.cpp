@@ -35,7 +35,7 @@ bool kruskal()
 	cnt = n;
 	for (int i = 1; i <= m; i++)
 	{
-		if (!n) break;
+		if (cnt <= 1) break;
 		int &u = edge[i].p1, &v = edge[i].p2;
 		
 		if (getf(u) != getf(v))
